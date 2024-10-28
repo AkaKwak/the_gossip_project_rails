@@ -1,0 +1,9 @@
+<h1>Liste des Potins</h1>
+
+<p>Bonjour à toi visiteur</p>
+
+<% @gossips.each do |gossip| %>
+  <h2><%= link_to gossip.title, gossip_path(gossip) %></h2>
+  <p><%= gossip.user.first_name %> <%= gossip.user.last_name %></p>
+<% end %>
+

@@ -1,0 +1,33 @@
+<h1>Contactez-nous</h1>
+
+<%= form_with model: @contact, local: true do |form| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "erreur") %> :</h2>
+      <ul>
+        <% @contact.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, "Nom" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :email, "Email" %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :message, "Message" %>
+    <%= form.text_area :message %>
+  </div>
+
+  <div>
+    <%= form.submit "Envoyer" %>
+  </div>
+<% end %>
