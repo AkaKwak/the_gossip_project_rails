@@ -17,10 +17,10 @@ class GossipsController < ApplicationController
     @gossip.user = anonymous_user
 
     if @gossip.save
-      flash[:notice] = "The super poptin a été créer !"
+      flash[:notice] = "The super popotin a été créer !"
       redirect_to gossips_path
     else
-      flash.now[:alert] = "Error: #{ @gossip.errors.full_messages.join(", ") }"
+      flash.now[:alert] = "Erreur : Pas de popotins crée!"
       render :new, status: :unprocessable_entity
     end
   end
