@@ -1,2 +1,22 @@
 <h1>Gossips#new</h1>
 <p>Find me in app/views/gossips/new.html.erb</p>
+
+<h1>Créer un nouveau potin</h1>
+
+<%= form_with model: @gossip, local: true do |form| %>
+  <div>
+    <%= form.label :title, "Titre" %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :content, "Contenu" %><br>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.submit "Créer le potin" %>
+  </div>
+<% end %>
+
+<%= link_to "Retour à la liste des potins", gossips_path %>
