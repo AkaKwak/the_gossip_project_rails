@@ -28,3 +28,5 @@ class GossipsController < ApplicationController
     params.require(:gossip).permit(:title, :content)
   end
 end
+
+#Je suis le nouveau commit
