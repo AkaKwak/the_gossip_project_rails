@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   # get "new_contact"
   resources :contacts, only: [:new, :create]
+
+  get 'profile/:id', to: 'users#show'
   
   get 'team', to: 'static_pages#team'
   get 'welcome/:name', to: 'static_pages#welcome', as: 'welcome'
