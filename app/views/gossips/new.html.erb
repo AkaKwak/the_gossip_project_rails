@@ -1,6 +1,3 @@
-<h1>Gossips#new</h1>
-<p>Find me in app/views/gossips/new.html.erb</p>
-
 <h1>Créer un nouveau potin</h1>
 
 <%= form_with model: @gossip, local: true do |form| %>
@@ -15,8 +12,8 @@
   </div>
 
   <div>
-    <%= form.submit "Créer le potin" %>
+    <%= form.submit "Créer le popotin" %>
   </div>
 <% end %>
 
-<%= link_to "Retour à la liste des potins", gossips_path %>
+<%= link_to "Retour à la liste des popotins", gossips_path %>

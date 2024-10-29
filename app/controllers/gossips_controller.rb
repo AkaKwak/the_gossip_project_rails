@@ -12,12 +12,15 @@ class GossipsController < ApplicationController
   end
 
   def create
+    anonymous_user = User.find_by(first_name: "Anonymous", last_name: "User")
     @gossip = Gossip.new(gossip_params)
-    @gossip.user = User.first # Associe un utilisateur par défaut pour l'instant
+    @gossip.user = anonymous_user
 
     if @gossip.save
-      redirect_to gossip_path(@gossip), notice: 'Potin créé avec succès !'
+      flash[:notice] = "The super poptin a été créer !"
+      redirect_to gossips_path
     else
+      flash.now[:alert] = "Error: #{ @gossip.errors.full_messages.join(", ") }"
       render :new, status: :unprocessable_entity
     end
   end
@@ -27,6 +30,12 @@ class GossipsController < ApplicationController
   def gossip_params
     params.require(:gossip).permit(:title, :content)
   end
+
+  def update
+  
+  end
 end
+
+
 
 #Je suis le nouveau commit
