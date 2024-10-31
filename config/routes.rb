@@ -1,17 +1,13 @@
 Rails.application.routes.draw do
   root "gossips#index"
-  # get "gossips/index"
-  # get "gossips/show"
-  # get "gossips/new"
-  # get "gossips/edit"
+
   resources :gossips
   resources :users
-  # get "new_contact"
-  resources :contacts, only: [:new, :create]
+  resources :cities, only: [:show]
+   resources :contacts, only: [:new, :create]
 
   get "index", to: "gossips#index"
   get 'profile/:id', to: 'users#show'
-  
   get 'team', to: 'static_pages#team'
   get 'welcome/:name', to: 'static_pages#welcome', as: 'welcome'
 
