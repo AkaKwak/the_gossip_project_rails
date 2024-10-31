@@ -22,5 +22,5 @@
 </p>
 <p>
   <strong>Ville :</strong>
-  <%= @users.city.name %>
+  <%= link_to @user.city.name, city_path(@user.city) if @user.city %></p>
 </p>

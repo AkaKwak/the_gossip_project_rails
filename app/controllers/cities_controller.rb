@@ -5,7 +5,7 @@ class CitiesController < ApplicationController
 
     def show
       @city = City.find(params[:id]) # Trouve la ville par son ID
-      @gossips = @city.users.flat_map(&:gossips) # Récupère tous les potins des utilisateurs de la ville
+      @gossips = @city.users.includes(:gossips).flat_map(&:gossips)# Récupère tous les potins des utilisateurs de la ville
     end
     
   

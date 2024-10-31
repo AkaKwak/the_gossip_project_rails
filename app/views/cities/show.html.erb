@@ -1,10 +1,11 @@
-<h1><%= @city.name %></h1>
+<h1>Ville : <%= @city.name %></h1>
 
-<%# <h2>Potins associés à la ville :</h2>
-<ul>
+<h2>Potins de cette ville :</h2>
+<% if @gossips.any? %>
   <% @gossips.each do |gossip| %>
-    <li>
-      <strong><%= gossip.title %></strong>: <%= gossip.content %>
-    </li>
+    <h3><%= link_to gossip.title, gossip_path(gossip) %></h3>
+    <p>Par <%= link_to "#{gossip.user.first_name} #{gossip.user.last_name}", user_path(gossip.user) %></p>
   <% end %>
-</ul> %>
+<% else %>
+  <p>Aucun potin pour cette ville.</p>
+<% end %>
