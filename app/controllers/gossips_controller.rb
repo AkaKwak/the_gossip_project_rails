@@ -25,17 +25,22 @@ class GossipsController < ApplicationController
     end
   end
 
+  def edit
+    @gossip = Gossip.find(params[:id]) # Trouve le potin à éditer
+  end
+
+  def update
+    @gossip = Gossip.find(params[:id])
+    if @gossip.update(gossip_params)
+      redirect_to @gossip, notice: "Potin mis à jour avec succès !"
+    else
+      render :edit
+    end
+  end
+
   private
 
   def gossip_params
     params.require(:gossip).permit(:title, :content)
   end
-
-  def update
-  
-  end
 end
-
-
-
-#Je suis le nouveau commit

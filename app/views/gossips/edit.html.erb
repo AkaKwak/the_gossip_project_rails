@@ -1,2 +1,16 @@
-<h1>Gossips#edit</h1>
-<p>Find me in app/views/gossips/edit.html.erb</p>
+<%# #gossips/edit.html.erb# %>
+<h1>Éditer le potin</h1>
+
+<%= form_with(model: @gossip, local: true) do |form| %>
+  <div>
+    <%= form.label :title, "Titre" %><br>
+    <%= form.text_field :title, value: @gossip.title %>
+  </div>
+  <div>
+    <%= form.label :content, "Contenu" %><br>
+    <%= form.text_area :content, value: @gossip.content %>
+  </div>
+  <div>
+    <%= form.submit "Mettre à jour" %>
+  </div>
+<% end %>
