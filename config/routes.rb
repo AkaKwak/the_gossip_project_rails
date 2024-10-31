@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root "gossips#index"
 
   resources :gossips do
-    resources :comments, only: [:create, :edit, :update]
+    resources :comments, only: [:create, :edit, :update, :destroy]
   end
   resources :users
   resources :cities, only: [:show]

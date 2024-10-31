@@ -1,6 +1,8 @@
 <h1>Modifier le commentaire</h1>
 
 <%= form_with(model: [@gossip, @comment], local: true) do |form| %>
-  <%= form.text_area :content %><br>
+  <%= form.text_area :content, placeholder: "Modifier votre commentaire" %><br>
   <%= form.submit "Mettre à jour le commentaire" %>
 <% end %>
+
+<%= button_to "Supprimer ce commentaire", gossip_comment_path(@gossip, @comment), method: :delete, data: { confirm: "Es-tu sûr de vouloir supprimer ce commentaire ?" }, class: "btn btn-danger" %>

@@ -31,6 +31,14 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @gossip = Gossip.find(params[:gossip_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    flash[:notice] = "Commentaire supprimé avec succès."
+    redirect_to gossip_path(@gossip)
+  end
+
   private
 
   def comment_params
