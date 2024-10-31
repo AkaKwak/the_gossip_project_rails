@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :users
   resources :cities, only: [:show]
   resources :contacts, only: [:new, :create]
+  
+  resources :sessions, only: [:new, :create, :destroy]
+
 
   get "index", to: "gossips#index"
   get 'team', to: 'static_pages#team'
