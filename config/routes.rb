@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "sessions/new"
   get "comments/create"
   get "comments/destroy"
   get "comments/comment_params"
