@@ -1,0 +1,6 @@
+<h1>Modifier le commentaire</h1>
+
+<%= form_with(model: [@gossip, @comment], local: true) do |form| %>
+  <%= form.text_area :content %><br>
+  <%= form.submit "Mettre à jour le commentaire" %>
+<% end %>

@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  get "comments/create"
+  get "comments/destroy"
+  get "comments/comment_params"
   root "gossips#index"
 
-  resources :gossips
+  resources :gossips do
+    resources :comments, only: [:create, :edit, :update]
+  end
   resources :users
   resources :cities, only: [:show]
   resources :contacts, only: [:new, :create]

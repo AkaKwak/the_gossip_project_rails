@@ -1,7 +1,24 @@
 <%# #gossips/show.html.erb# %>
 <h1><%= @gossip.title %></h1>
 <p><%= @gossip.content %></p>
-<p><strong>Auteur :</strong> <%= link_to "#{@gossip.user.first_name} #{@gossip.user.last_name}", user_path(@gossip.user) %></p>
-<p><strong>Ville :</strong> <%= @gossip.user.city.name if @gossip.user.city %></p>
+
+<p><strong>Auteur :</strong> <%= link_to "#{@gossip.user.first_name} #{@gossip.user.last_name}", user_path(@gossip.user) %> // <strong>Ville :</strong> <%= @gossip.user.city.name if @gossip.user.city %></p>
+
 <%= link_to "Éditer ce potin", edit_gossip_path(@gossip), class: "btn btn-primary" %>
 <%= button_to 'Supprimer ce potin', gossip_path, method: :delete, data: { turbo: false, confirm: "Es-tu sûr de vouloir supprimer ce potin ?" }, class: "btn btn-danger" %>
+
+<h3>Commentaires</h3>
+
+<% @gossip.comments.each do |comment| %>
+  <p>
+    <strong>Auteur :</strong> <%= comment.user.first_name %> <%= comment.user.last_name %><br>
+    <strong>Texte :</strong> <%= comment.content %><br>
+    <%= link_to "Modifier", edit_gossip_comment_path(@gossip, comment), class: "btn btn-secondary" %>
+  </p>
+<% end %>
+
+<h4>Ajouter un commentaire :</h4>
+<%= form_with(model: [@gossip, @gossip.comments.build], local: true) do |form| %>
+  <%= form.text_area :content, placeholder: "Votre commentaire" %><br>
+  <%= form.submit "Publier le commentaire" %>
+<% end %>

@@ -2,8 +2,8 @@
 <p>Bonjour à toi visiteur.<br> Bienvenue chez <strong>The Gossip Project</strong>, créateur de <strong>Popotins</strong> depuis 1990</p>
 
 
-<h2><%= link_to "Creer un nouveau Popotin ! ", new_gossip_path, class: "btn btn-primary"  %></h2><br>
-
+<h2><%= link_to "Creer un nouveau Popotin ! ", new_gossip_path, class: "btn btn-primary"  %></h2>
+<br>
 <h2>Liste des Popotins</h2>
 <% @gossips.reverse.each do |gossip| %>
   <h3><%= link_to gossip.title, gossip_path(gossip) %></h3>
