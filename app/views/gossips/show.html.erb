@@ -1,5 +1,5 @@
-
+<%# #gossips/show.html.erb# %>
 <h1><%= @gossip.title %></h1>
 <p><%= @gossip.content %></p>
 <p><strong>Auteur :</strong> <%= link_to "#{@gossip.user.first_name} #{@gossip.user.last_name}", "/profile/#{@gossip.user.id}"%></p>
-<p><strong>Ville :</strong> <%= @gossip.user.town %></p>
+<p><strong>Ville :</strong> <%= @gossip.user.city.name if @gossip.user.city %></p>
