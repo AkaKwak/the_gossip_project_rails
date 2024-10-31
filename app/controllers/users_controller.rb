@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     # Méthode qui récupère le user concerné et l'envoie à la view show (show.html.erb) pour affichage
-    @users = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def new
