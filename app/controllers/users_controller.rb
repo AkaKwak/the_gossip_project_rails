@@ -1,4 +1,4 @@
-class GossipsController < ApplicationController
+class UsersController < ApplicationController
   def index
     # Méthode qui récupère tous les user et les envoie à la view index (index.html.erb) pour affichage
   end

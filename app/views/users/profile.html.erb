@@ -1,1 +1,26 @@
-<h1> Bienvenue sur ton profil <%= @users.first_name %></h1> 
+<h1>Détails de l'utilisateur</h1>
+
+<p>
+  <strong>Prénom :</strong>
+  <%= @users.first_name %> <!-- Remplace par le champ correct si nécessaire -->
+</p>
+<p>
+  <strong>Nom :</strong>
+  <%= @users.last_name %> <!-- Remplace par le champ correct si nécessaire -->
+</p>
+<p>
+  <strong>Description :</strong>
+  <%= @users.description %> <!-- Remplace par le champ correct si nécessaire -->
+</p>
+<p>
+  <strong>Email :</strong>
+  <%= @users.email %>
+</p>
+<p>
+  <strong>Âge :</strong>
+  <%= @users.age %>
+</p>
+<p>
+  <strong>Ville :</strong>
+  <%= @users.town %> <!-- Remplace par le champ correct si nécessaire -->
+</p>

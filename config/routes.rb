@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   # get "gossips/new"
   # get "gossips/edit"
   resources :gossips
-
+  resources :users
   # get "new_contact"
   resources :contacts, only: [:new, :create]
 
+  get "index", to: "gossips#index"
   get 'profile/:id', to: 'users#show'
   
   get 'team', to: 'static_pages#team'
