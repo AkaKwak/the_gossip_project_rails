@@ -1,0 +1,5 @@
+class AddTownToUsers < ActiveRecord::Migration[7.2]
+  def change
+    add_column :users, :town, :string
+  end
+end
