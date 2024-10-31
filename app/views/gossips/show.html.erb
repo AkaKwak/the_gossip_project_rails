@@ -4,4 +4,4 @@
 <p><strong>Auteur :</strong> <%= link_to "#{@gossip.user.first_name} #{@gossip.user.last_name}", user_path(@gossip.user) %></p>
 <p><strong>Ville :</strong> <%= @gossip.user.city.name if @gossip.user.city %></p>
 <%= link_to "Éditer ce potin", edit_gossip_path(@gossip), class: "btn btn-primary" %>
-<%= link_to "Supprimer ce potin", gossip_path(@gossip), method: :delete, class: "btn btn-danger" %>
+<%= button_to 'Supprimer ce potin', gossip_path, method: :delete, data: { turbo: false, confirm: "Es-tu sûr de vouloir supprimer ce potin ?" }, class: "btn btn-danger" %>
