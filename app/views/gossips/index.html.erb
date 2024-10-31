@@ -5,9 +5,17 @@
 <h2><%= link_to "Creer un nouveau Popotin ! ", new_gossip_path, class: "btn btn-primary"  %></h2>
 <br>
 <h2>Liste des Popotins</h2>
-<% @gossips.reverse.each do |gossip| %>
-  <h3><%= link_to gossip.title, gossip_path(gossip) %></h3>
-  <p><%= gossip.user.first_name %> <%= gossip.user.last_name %></p>
 
+<% @gossips.reverse.each do |gossip| %>
+  <div>
+    <strong>Titre :</strong> <%= link_to gossip.title, gossip_path(gossip) %>
+  </div>
+  <div>
+    <strong>Auteur :</strong> <%= gossip.user.first_name %> <%= gossip.user.last_name %>
+  </div>
+  <div>
+    <strong>Nombre de commentaires :</strong> <%= gossip.comments.count %>
+  </div>
+  <br>
 <% end %>
 
