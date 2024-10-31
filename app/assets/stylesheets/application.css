@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+ 
  a.logoLink {
     color: inherit;
     text-decoration: none;

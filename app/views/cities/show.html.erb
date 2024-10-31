@@ -1,7 +1,8 @@
 <%# #cities/show.html.erb# %>
+<br>
 <h1>Ville : <%= @city.name %></h1>
-
-<h2>Potins de cette ville :</h2>
+<br>
+<h3>Potins de cette ville :</h3>
 <% if @gossips.any? %>
   <% @gossips.each do |gossip| %>
     <h3><%= link_to gossip.title, gossip_path(gossip) %></h3>

@@ -38,6 +38,13 @@ class GossipsController < ApplicationController
     end
   end
 
+  def destroy
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    flash[:notice] = "Potin supprimé avec succès !"
+    redirect_to gossips_path
+  end
+
   private
 
   def gossip_params
