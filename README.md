@@ -34,10 +34,7 @@ Bienvenue dans **The Gossip Project** ! Cette application Rails permet aux utili
 
   ```bash
     rails db:create
-  ```  
-- Migration de la base de données :
-  ```bash
-   rails db:migrate
+    rails db:migrate
   ```
 4. Initialisation de la base de données avec des données de test :
 ```bash
