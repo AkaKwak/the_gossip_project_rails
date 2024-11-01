@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get "sessions/new"
-  get "comments/create"
-  get "comments/destroy"
-  get "comments/comment_params"
+  
   root "gossips#index"
 
   resources :gossips do
@@ -11,7 +8,6 @@ Rails.application.routes.draw do
   resources :users
   resources :cities, only: [:show]
   resources :contacts, only: [:new, :create]
-  
   resources :sessions, only: [:new, :create, :destroy]
 
 

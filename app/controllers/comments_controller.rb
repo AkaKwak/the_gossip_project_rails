@@ -1,16 +1,20 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user, only: [:new, :create, :edit, :update, :destroy]
+  def new
+    @comment = Comment.new
+  end
+  
   def create
-    @gossip = Gossip.find(params[:gossip_id])
-    anonymous_user = User.find_or_create_by(first_name: "Anonymous", last_name: "User")
-    @comment = @gossip.comments.build(comment_params)
-    @comment.user = anonymous_user
-
+    @comment = Comment.new(comment_params)
+    @comment.user = current_user  # Utilise le current_user comme auteur
+    @comment.gossip = Gossip.find(params[:gossip_id])  # Associer au gossip correspondant
     if @comment.save
-      flash[:notice] = "Commentaire ajouté avec succès !"
+      flash[:notice] = "Commentaire ajouté avec succès."
+      redirect_to gossip_path(@comment.gossip)
     else
-      flash[:alert] = "Erreur lors de l'ajout du commentaire."
+      flash.now[:alert] = "Erreur lors de l'ajout du commentaire."
+      render :new, status: :unprocessable_entity
     end
-    redirect_to gossip_path(@gossip)
   end
 
   def edit

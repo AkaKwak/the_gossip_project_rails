@@ -1,4 +1,6 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:new, :create, :edit, :update, :destroy]
+
   def index
     @gossips = Gossip.all
   end
@@ -12,9 +14,8 @@ class GossipsController < ApplicationController
   end
 
   def create
-    anonymous_user = User.find_by(first_name: "Anonymous", last_name: "User")
     @gossip = Gossip.new(gossip_params)
-    @gossip.user = anonymous_user
+    @gossip.user = current_user
 
     if @gossip.save
       flash[:notice] = "The super popotin a été créer !"
