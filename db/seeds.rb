@@ -50,7 +50,7 @@ end
     age: rand(18..80),
     email: Faker::Internet.unique.email,
     description: Faker::Lorem.sentence,
-    city: City.all.sample,
+    city_id: rand(1..5),
     password: BCrypt::Password.create("password") # mot de passe par défaut
   )
 
