@@ -7,8 +7,6 @@ Bienvenue dans **The Gossip Project** ! Cette application Rails permet aux utili
 - [Utilisation](#utilisation)
 - [Fonctionnalités](#fonctionnalités)
 - [Technologies utilisées](#technologies-utilisées)
-- [Contributions](#contributions)
-- [Licence](#licence)
 
 ## Installation
 
