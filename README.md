@@ -18,5 +18,5 @@ Ce guide documente les étapes nécessaires pour configurer et lancer l'applicat
    cd the_gossip_project
 
 2. **Installez les dépendances Ruby :**
-```bash
+  ```bash
   bundle install
