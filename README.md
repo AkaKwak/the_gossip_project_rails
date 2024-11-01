@@ -49,3 +49,27 @@ rails server
 
 2. Accédez à l'application dans votre navigateur : Ouvrez http://localhost:3000 pour voir l'application en action.
 
+### Utilisation
+
+  - Inscrivez-vous pour créer un compte.
+  - Connectez-vous pour créer des potins et les associer à une ville.
+  - Consultez les potins des autres utilisateurs, commentez-les et likez-les.
+  - Accédez aux potins par ville pour voir ceux qui sont proches de chez vous.
+
+### Fonctionnalités
+
+  - CRUD des utilisateurs : Inscription, connexion, édition et suppression.
+  - CRUD des potins : Création, édition, affichage et suppression de potins.
+  - Commentaires : Ajout de commentaires aux potins.
+  - Likes : Possibilité de liker et déliker des potins.
+  - Affichage par ville : Voir tous les potins associés à une ville.
+  - Sécurité : Mot de passe crypté avec BCrypt pour les utilisateurs.
+
+###  Technologies utilisées
+
+  - Ruby on Rails : Framework principal pour la construction de l'application.
+  - PostgreSQL : Base de données relationnelle pour stocker les informations.
+  - BCrypt : Utilisé pour le cryptage des mots de passe.
+  - Bootstrap : Framework CSS pour styliser l'interface utilisateur.
+  - Faker : Gemme pour générer des données de test et de développement.
+  - Stimulus/Turbo : Utilisés pour l'interactivité sans rechargement complet de page.
