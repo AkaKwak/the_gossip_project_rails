@@ -60,3 +60,45 @@ a.navButton:hover {
   color: #721c24; /* couleur du texte rouge foncé */
   border: 1px solid #f5c6cb; /* bordure rouge */
 }
+
+body {
+  background-color: #f8f9fa; /* Un gris clair agréable pour le fond */
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* Police moderne et lisible */
+  color: #333; /* Couleur de texte gris foncé pour une bonne lisibilité */
+  margin: 0;
+  padding: 0;
+  line-height: 1.6; /* Espacement entre les lignes pour faciliter la lecture */
+}
+
+.container {
+  max-width: 800px; /* Largeur maximale pour le contenu */
+  margin: 20px auto; /* Centrage avec une marge automatique */
+  padding: 20px;
+  background-color: #fff; /* Couleur de fond blanc pour contraster avec le corps */
+  border-radius: 8px; /* Bords arrondis pour un effet plus doux */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Légère ombre pour la profondeur */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #333; /* Couleur sombre pour les titres */
+  font-weight: 600; /* Un peu plus gras pour les titres */
+  margin-top: 0;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+button, .btn {
+  font-size: 1em;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.navbar {
+  margin-bottom: 20px; /* Espacement sous la navbar */
+}
+
+.alert {
+  margin-bottom: 20px; /* Espacement sous les alertes */
+}
