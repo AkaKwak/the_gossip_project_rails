@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation de l'application "The Gossip Project"
 
-Things you may want to cover:
+Ce guide documente les étapes nécessaires pour configurer et lancer l'application.
 
-* Ruby version
+### Prérequis
 
-* System dependencies
+* Version Ruby : 3.2.2
+* Version Rails : 7.2.1.2
+* PostgreSQL : pour la base de données
 
-* Configuration
+### Configuration du système
 
-* Database creation
+1. **Clonez le repository :**
+   ```bash
+   git clone https://github.com/votre_nom_d_utilisateur/the_gossip_project.git
+   cd the_gossip_project
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+2. **Installez les dépendances Ruby :**
+```bash
+  bundle install
