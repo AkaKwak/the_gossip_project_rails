@@ -1,5 +1,6 @@
 class GossipsController < ApplicationController
   before_action :authenticate_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @gossips = Gossip.all
@@ -14,15 +15,12 @@ class GossipsController < ApplicationController
   end
 
   def create
-    @gossip = Gossip.new(gossip_params)
-    @gossip.user = current_user
-
+    @gossip = current_user.gossips.build(gossip_params)
     if @gossip.save
-      flash[:notice] = "The super popotin a été créer !"
-      redirect_to gossips_path
+      flash[:notice] = "Potin créé avec succès."
+      redirect_to @gossip
     else
-      flash.now[:alert] = "Erreur : Pas de popotins crée!"
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 
@@ -47,6 +45,11 @@ class GossipsController < ApplicationController
   end
 
   private
+
+def correct_user
+  @gossip = current_user.gossips.find_by(id: params[:id])
+  redirect_to root_path, alert: "Accès non autorisé" if @gossip.nil?
+end
 
   def gossip_params
     params.require(:gossip).permit(:title, :content)

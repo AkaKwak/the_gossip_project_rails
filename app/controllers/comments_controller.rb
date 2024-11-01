@@ -1,19 +1,21 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   def new
     @comment = Comment.new
   end
-  
+
   def create
-    @comment = Comment.new(comment_params)
-    @comment.user = current_user  # Utilise le current_user comme auteur
-    @comment.gossip = Gossip.find(params[:gossip_id])  # Associer au gossip correspondant
+  @comment = Comment.new(comment_params)
+  @comment.user = current_user
+  @comment.gossip = Gossip.find(params[:gossip_id])
+
     if @comment.save
       flash[:notice] = "Commentaire ajouté avec succès."
       redirect_to gossip_path(@comment.gossip)
     else
       flash.now[:alert] = "Erreur lors de l'ajout du commentaire."
-      render :new, status: :unprocessable_entity
+      redirect_to gossip_path(@comment.gossip), status: :unprocessable_entity
     end
   end
 
@@ -44,6 +46,14 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def correct_user
+    @comment = Comment.find(params[:id])
+    unless @comment.user == current_user
+      flash[:alert] = "Accès non autorisé !"
+      redirect_to gossip_path(@comment.gossip)
+    end
+  end
 
   def comment_params
     params.require(:comment).permit(:content)

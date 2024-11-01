@@ -3,12 +3,11 @@
 <p><%= @gossip.content %></p>
 
 <p><strong>Auteur :</strong> <%= link_to "#{@gossip.user.first_name} #{@gossip.user.last_name}", user_path(@gossip.user) %> // <strong>Ville :</strong> <%= @gossip.user.city.name if @gossip.user.city %></p>
-
 <%= link_to "Éditer ce potin", edit_gossip_path(@gossip), class: "btn btn-primary" %>
-<%= button_to 'Supprimer ce potin', gossip_path, method: :delete, data: { turbo: false, confirm: "Es-tu sûr de vouloir supprimer ce potin ?" }, class: "btn btn-danger" %>
+<%= button_to 'Supprimer ce potin', gossip_path(@gossip), method: :delete, data: { turbo: false, confirm: "Es-tu sûr de vouloir supprimer ce potin ?" }, class: "btn btn-danger" %>
 
 <h3>Commentaires</h3>
-
+<% if current_user == comment.user %>
 <% @gossip.comments.each do |comment| %>
   <p>
     <strong>Auteur :</strong> <%= comment.user.first_name %> <%= comment.user.last_name %><br>
