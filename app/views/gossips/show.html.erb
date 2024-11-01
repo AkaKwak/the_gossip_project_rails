@@ -3,16 +3,20 @@
 <p><%= @gossip.content %></p>
 
 <p><strong>Auteur :</strong> <%= link_to "#{@gossip.user.first_name} #{@gossip.user.last_name}", user_path(@gossip.user) %> // <strong>Ville :</strong> <%= @gossip.user.city.name if @gossip.user.city %></p>
-<%= link_to "Éditer ce potin", edit_gossip_path(@gossip), class: "btn btn-primary" %>
-<%= button_to 'Supprimer ce potin', gossip_path(@gossip), method: :delete, data: { turbo: false, confirm: "Es-tu sûr de vouloir supprimer ce potin ?" }, class: "btn btn-danger" %>
+<% if current_user == @gossip.user %>
+  <%= link_to "Éditer ce potin", edit_gossip_path(@gossip), class: "btn btn-primary" %>
+  <%= button_to 'Supprimer ce potin', gossip_path(@gossip), method: :delete, data: { turbo: false, confirm: "Es-tu sûr de vouloir supprimer ce potin ?" }, class: "btn btn-danger" %>
+<% end %>
 
 <h3>Commentaires</h3>
-<% if current_user == comment.user %>
+
 <% @gossip.comments.each do |comment| %>
   <p>
     <strong>Auteur :</strong> <%= comment.user.first_name %> <%= comment.user.last_name %><br>
     <strong>Texte :</strong> <%= comment.content %><br>
-    <%= link_to "Modifier", edit_gossip_comment_path(@gossip, comment), class: "btn btn-secondary" %>
+    <% if current_user == comment.user %>
+      <%= link_to "Modifier", edit_gossip_comment_path(@gossip, comment), class: "btn btn-secondary" %>
+    <% end %>
   </p>
 <% end %>
 
