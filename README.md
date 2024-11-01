@@ -24,21 +24,21 @@ Bienvenue dans **The Gossip Project** ! Cette application Rails permet aux utili
    git clone https://github.com/votre_nom_d_utilisateur/the_gossip_project.git
 
 2. **Installez les dépendances Ruby :**
-```bash
-bundle install
-```
+  ```bash
+  bundle install
+  ```
 
 3. **Configurez la base de données :**
 
 - Création de la base de données :
 
-```bash
-  rails db:create
-```  
+  ```bash
+    rails db:create
+  ```  
 - Migration de la base de données :
-```bash
-  rails db:migrate
-```
+  ```bash
+   rails db:migrate
+  ```
 4. Initialisation de la base de données avec des données de test :
 ```bash
   rails db:seed
