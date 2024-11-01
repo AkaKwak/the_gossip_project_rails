@@ -1,31 +1,29 @@
 <br>
 <p>Bonjour à toi visiteur.<br> Bienvenue chez <strong>The Gossip Project</strong>, créateur de <strong>Popotins</strong> depuis 1990</p>
 
-<h2><%= link_to "Creer un nouveau Popotin ! ", new_gossip_path, class: "btn btn-primary" %></h2>
+<h2><%= link_to "Creer un nouveau Popotin !", new_gossip_path, class: "btn btn-primary" %></h2>
 <br>
 <h2>Liste des Popotins (<%= @gossips.count %>)</h2>
 
 <% @gossips.reverse.each do |gossip| %>
-  <div>
-    <strong>Titre :</strong> <%= link_to gossip.title, gossip_path(gossip) %>
+  <div class="gossip-card">
+    <div class="gossip-title">
+      <%= link_to gossip.title, gossip_path(gossip) %>
+    </div>
+    
+    <div class="gossip-info">
+      <div><strong>Auteur :</strong> <%= gossip.user.first_name %> <%= gossip.user.last_name %></div>
+      <div><strong>Commentaires :</strong> <%= gossip.comments.count %></div>
+      <div><strong>Likes :</strong> <%= gossip.likes.count %></div>
+    </div>
+    
+    <div class="gossip-buttons">
+      <% if current_user && gossip.liked_by_users.include?(current_user) %>
+        <%= button_to 'Unlike', gossip_like_path(gossip, gossip.likes.find_by(user: current_user)), method: :delete, class: "btn btn-secondary btn-like" %>
+      <% else %>
+        <%= button_to 'Like', gossip_likes_path(gossip), method: :post, class: "btn btn-primary btn-like" %>
+      <% end %>
+    </div>
   </div>
-  <div>
-    <strong>Auteur :</strong> <%= gossip.user.first_name %> <%= gossip.user.last_name %>
-  </div>
-  <div>
-    <strong>Nombre de commentaires :</strong> <%= gossip.comments.count %>
-  </div>
-  <div>
-    <strong>Nombre de likes :</strong> <%= gossip.likes.count %>
-  </div>
-
-  <div>
-    <% if current_user && gossip.liked_by_users.include?(current_user) %>
-      <%= button_to 'Unlike', gossip_like_path(gossip, gossip.likes.find_by(user: current_user)), method: :delete, class: "btn btn-secondary" %>
-    <% else %>
-      <%= button_to 'Like', gossip_likes_path(gossip), method: :post, class: "btn btn-primary" %>
-    <% end %>
-  </div>
-
-  <br>
 <% end %>
+

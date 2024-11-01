@@ -1,13 +1,26 @@
-<%# #cities/show.html.erb# %>
 <br>
-<h1>Ville : <%= @city.name %></h1>
+<h1 class="text-center">Ville : <%= @city.name %></h1>
 <br>
-<h3>Potins de cette ville :</h3>
-<% if @gossips.any? %>
-  <% @gossips.each do |gossip| %>
-    <h3><%= link_to gossip.title, gossip_path(gossip) %></h3>
-    <p>Par <%= link_to "#{gossip.user.first_name} #{gossip.user.last_name}", user_path(gossip.user) %></p>
+<h3 class="text-center">Potins de cette ville :</h3>
+
+<div class="potins-container">
+  <% if @gossips.any? %>
+    <% @gossips.each do |gossip| %>
+      <div class="potin-card">
+        <h3><%= link_to gossip.title, gossip_path(gossip), class: "potin-title" %></h3>
+        <p><strong>Auteur :</strong> <%= link_to "#{gossip.user.first_name} #{gossip.user.last_name}", user_path(gossip.user), class: "author-link" %></p>
+        <p><strong>Nombre de commentaires :</strong> <%= gossip.comments.count %></p>
+        <p><strong>Nombre de likes :</strong> <%= gossip.likes.count %></p>
+        
+        <% if current_user && gossip.liked_by_users.include?(current_user) %>
+          <%= button_to 'Unlike', gossip_like_path(gossip, gossip.likes.find_by(user: current_user)), method: :delete, class: "btn btn-secondary btn-sm" %>
+        <% else %>
+          <%= button_to 'Like', gossip_likes_path(gossip), method: :post, class: "btn btn-primary btn-sm" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="text-center">Aucun potin pour cette ville.</p>
   <% end %>
-<% else %>
-  <p>Aucun potin pour cette ville.</p>
-<% end %>
+</div>
+
