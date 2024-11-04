@@ -8,7 +8,10 @@
   <span class="mx-2">|</span> <!-- Séparateur avec une marge horizontale -->
   <p class="mb-0"><strong>Ville :</strong> <%= @gossip.user.city.name if @gossip.user.city %></p>
 </div>
-
+    <% if current_user && current_user == @gossip.user %>
+  <%= link_to "Éditer ce potin", edit_gossip_path(@gossip), class: "btn btn-primary" %>
+  <%= button_to "Supprimer ce potin", gossip_path(@gossip), method: :delete, class: "btn btn-danger", data: { confirm: "Es-tu sûr de vouloir supprimer ce potin ?" } %>
+<% end %>
 
 
     <div class="text-center mb-4">
@@ -27,6 +30,8 @@
         <p><strong>Texte :</strong> <%= comment.content %></p>
       </div>
     <% end %>
+
+
 
     <h4 class="mt-4">Ajouter un commentaire :</h4>
     <%= form_with(model: [@gossip, @gossip.comments.build], local: true) do |form| %>

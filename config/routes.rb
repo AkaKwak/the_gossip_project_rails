@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
 
-  get "index", to: "gossips#index"
   get 'team', to: 'static_pages#team'
   get 'welcome/:name', to: 'static_pages#welcome', as: 'welcome'
 
